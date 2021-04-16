@@ -1,7 +1,7 @@
 #################################################################
 # Name:Connor Gwatney
 # Date:04-16-2021
-# Description: Calculatrise
+# Description: Tetris
 #################################################################
 from tkinter import *
 
