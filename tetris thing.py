@@ -1,8 +1,6 @@
-
-
 #################################################################
-# Name:Jake Stelly
-# Date:02-01-2021
+# Name:Connor Gwatney
+# Date:04-16-2021
 # Description: Calculatrise
 #################################################################
 from tkinter import *
