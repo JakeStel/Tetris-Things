@@ -1,6 +1,6 @@
 #################################################################
 # Name:Connor Gwatney
-# Date:04-16-2021
+# Date:04-19-2021
 # Description: Tetris
 #################################################################
 from tkinter import *
@@ -18,9 +18,9 @@ class MainGrid(Frame):
         
         #create each grid pice in a for loop
         #commit them to the grid
-        for j in range(10):
-            for i in range(24):
-                img = PhotoImage(file="Tetris parts/grid.gif")
+        for j in range(24):
+            for i in range(10):
+                img = PhotoImage(file="Tetris parts/grid1.gif")
                 L = Label(image = img,bg="black")
                 L.image = img
                 L.grid(row=j,column = i)
