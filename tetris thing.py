@@ -15,6 +15,7 @@ class MainGrid(Frame):
     def setupGrid(self):
         self.display = Label(self, text="", anchor = E, bg="black",height =2, width=15)
         self.display.grid(row=2,column=0, columnspan = 1, sticky = E+W+N+S)
+        self.display.pack()
         
         #create each grid pice in a for loop
         #commit them to the grid
@@ -37,7 +38,7 @@ class BlockGrid(Frame):
         self.display.grid(row=2,column=0, columnspan = 1, sticky = E+W+N+S)
 
     def Put(self,R,C,Name):
-        img = PhotoImage(file="Tetris parts/Square.gif")
+        img = PhotoImage(file="Tetris parts/Square1.gif")
         L = Label(image = img,bg="black")
         L.image = img
         L.grid(row= R,column = C)
@@ -47,7 +48,7 @@ class brick():
         self.R = R
         self.C = C
     def Place(self):
-        BlockGrid.Put(self,self.R,self.C)
+        BlockGrid.Put(self,self.R,self.C,line)
             
         
 class pieces:
