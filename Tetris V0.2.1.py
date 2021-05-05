@@ -97,7 +97,7 @@ class Tetris:
         
         
         if direction == 'Down':
-            if r+l > self.grid_height:
+            if r+l >= self.grid_height:
                 print(r)
                 self.bottom()
                 return
