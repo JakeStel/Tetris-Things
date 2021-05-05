@@ -17,12 +17,13 @@ class Tetris:
         self.w = 300
         self.h = 720
         self.square_w = self.w//10
-        self.canvas = Canvas(game, height = self.h, width = self.w) #bg = 'gray')
+        self.canvas = Canvas(game, height = self.h, width = self.w)
         self.canvas.grid(row=0, column = 0)
-        self.startLine = self.canvas.create_line(0, self.h/6, self.w, self.h/6, width = 4)
+        self.startLine = self.canvas.create_line(0, self.h/6, self.w, self.h/6, width = 2)
         self.tickrate = 1000
         self.spawning = False
         self.master.after(self.tickrate, self.fps)
+        self.active_piece = False
 
         #=Creating the Shapes=#
         self.shapes = {'s':[['','*'],
@@ -73,7 +74,7 @@ class Tetris:
             self.add_piece()
             self.spawning = not self.spawning
         
-        self.move()
+        self.move()    
 
         self.master.after(self.tickrate, self.fps)
         
@@ -99,7 +100,6 @@ class Tetris:
         
         if direction == 'Down':
             if r+l >= self.grid_height:
-                print(r)
                 self.bottom()
                 return
             rt = r+1
@@ -196,12 +196,14 @@ class Tetris:
 
         for row in self.grid:
             row[:] = ['x' if cell == '*' else cell for cell in row]
+
         
 
     def add_piece(self):
         if DEBUG:
             print("Creating random piece")
-            
+        
+    
         shape = self.shapes[random.choice('szrLoIT')]
         shape = ra(shape, random.choice((0,90,180,270)))
         w = len(shape[0])
