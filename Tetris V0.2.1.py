@@ -15,7 +15,7 @@ class Tetris:
         self.grid_height = 24
         self.grid = [['' for col in range(self.grid_width)] for row in range(self.grid_height)]
         self.w = 300
-        self.h = 750
+        self.h = 720
         self.square_w = self.w//10
         self.canvas = Canvas(game, height = self.h, width = self.w) #bg = 'gray')
         self.canvas.grid(row=0, column = 0)
@@ -73,7 +73,7 @@ class Tetris:
             self.add_piece()
             self.spawning = not self.spawning
         
-        #self.move()  moves block downward in motion    
+        self.move()
 
         self.master.after(self.tickrate, self.fps)
         
@@ -81,8 +81,7 @@ class Tetris:
 
 #====================Movement Function====================#
     def move(self, event=None):
-        if DEBUG:
-            print('Keysym:',event.keysym)
+        
         if not self.spawning:
             return
         
@@ -94,6 +93,8 @@ class Tetris:
 
 
         direction = (event and event.keysym) or 'Down'
+        if DEBUG:
+            print('Keysym:',direction)
         
         
         if direction == 'Down':
@@ -122,7 +123,6 @@ class Tetris:
                 
                 for column, block in zip(range(ct,ct+w), blocks):
                     if block and self.grid[row][column] == 'x':
-                        print('yes')
                         if direction == 'Down':
                             self.bottom()
 
@@ -130,9 +130,9 @@ class Tetris:
 
                     
 
-##        for row in self.grid:
-##            row[:] = ['' if cell == for cell in row]
-##            
+        for row in self.grid:
+            row[:] = ['' if cell == '*' else cell for cell in row]
+            
 
         #=Moves Piece Down=#
         if direction == 'Down':
@@ -153,11 +153,6 @@ class Tetris:
                 self.active_piece['col'] += 1
                 c += 1
 
-##            if 0 <= column < self.grid_width:
-##                for idx in range(r, r+l):
-##                    if self.grid[idx][column] == '*':
-##                        self.grid[idx][column] = ''
-##                
            
         for row, blocks in zip(range(r, r+l),
                                self.active_piece['shape']):
@@ -196,6 +191,11 @@ class Tetris:
         self.spawning = not self.spawning
         if DEBUG:
             print("Piece has reached the bottom")
+            for row in self.grid:
+                print(row)
+
+        for row in self.grid:
+            row[:] = ['x' if cell == '*' else cell for cell in row]
         
 
     def add_piece(self):
@@ -223,9 +223,6 @@ class Tetris:
                         self.canvas.create_rectangle(self.active_piece['coords'][-1]))
 
                     
-        if DEBUG:
-            for row in self.grid:
-                print(row)
                 
         
 
