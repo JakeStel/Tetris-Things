@@ -144,9 +144,10 @@ class Tetris:
         
 #=====================Direction Function==================#
     def Direction(self, event):
-        if DEBUG:
-            print('Keysym:',event.keysym)
+        
         if type(event) == int:
+            if DEBUG:
+                print('Keysym:',direction)
             direction = event
             if direction == 18:
                 direction = 'Down'
@@ -295,7 +296,9 @@ class Tetris:
         ct += x_adjust
 
 
-        print(shape)
+        if DEBUG:
+            print(shape)
+            
         for row, blocks in zip(range(rt, rt+l),
                                shape
                                ):

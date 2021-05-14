@@ -1,0 +1,3 @@
+This Github Page was used to create a version of Tetris using python.
+
+Attached in this Github are our Versions of the Tetris game we created, Libraries we used to create it, as well as a few diagrams showing what it physically ran on
