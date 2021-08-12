@@ -10,7 +10,7 @@ GPIO.setup(buttons, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
 
 DEBUG = False
 
-#==Side Class===#
+#===Side Class===#
 class Shape:
     def __init__(self, shape, piece, row, column, coords):
         self.shape = shape
